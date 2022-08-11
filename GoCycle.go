@@ -16,12 +16,12 @@ type Cycle struct {
 	WaitTime time.Duration
 }
 
-func New(List []string) *Cycle {
+func New(List *[]string) *Cycle {
 	return &Cycle{
 		WaitTime: 50 * time.Millisecond,
 		Mutex:    &sync.Mutex{},
 		Locked:   []string{},
-		List:     List,
+		List:     *List,
 		I:        0,
 	}
 }
@@ -31,15 +31,19 @@ func NewFromFile(Path string) (*Cycle, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer file.Close()
-
 	var lines []string
+	
+	defer file.Close()
+	defer func () {
+		lines = nil
+	}()
+
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		lines = append(lines, scanner.Text())
 	}
 
-	return New(lines), nil
+	return New(&lines), nil
 }
 
 // fuck duplicate code i care dont bully me
@@ -61,9 +65,9 @@ func (c *Cycle) IsLocked(Element string) bool {
 	return false
 }
 
-func isInList(List []string, Element string) bool {
-	for _, v := range List {
-		if Element == v {
+func isInList(List *[]string, Element *string) bool {
+	for _, v := range *List {
+		if *Element == v {
 			return true
 		}
 	}
@@ -108,17 +112,23 @@ func (c *Cycle) Unlock(Element string) {
 	}
 }
 
-func (c *Cycle) ClearDuplicates() {
+func (c *Cycle) ClearDuplicates() int {
 	c.Mutex.Lock()
 	defer c.Mutex.Unlock()
 
+	removed := 0
 	var list []string
 	for _, v := range c.List {
-		if !isInList(list, v) {
+		if !isInList(&list, &v) {
 			list = append(list, v)
+		} else {
+			removed++
 		}
 	}
 	c.List = list
+	list = nil
+
+	return removed
 }
 
 func (c *Cycle) Remove(Element string) {

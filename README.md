@@ -17,7 +17,7 @@ import (
 )
 
 func main() {
-	cycle, err := GoCycle.NewFromFile("proxies.txt") // Load from list: GoCycle.New(List []string)
+	cycle, err := GoCycle.NewFromFile("proxies.txt") // Load from list: GoCycle.New(List *[]string)
 
 	if err != nil {
 		panic("Can't open proxy file")

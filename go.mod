@@ -1,3 +1,3 @@
-module github.com/its-vichy/GoCycle
+module github.com/dropout1337/GoCycle
 
 go 1.18

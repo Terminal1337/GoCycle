@@ -4,7 +4,7 @@
 
 ## Installation:
 ```
-go get github.com/its-vichy/GoCycle
+go get github.com/dropout1337/GoCycle
 ```
 
 ## Usage:
@@ -13,7 +13,7 @@ package main
 
 import (
 	"time"
-	"github.com/its-vichy/GoCycle"
+	"github.com/dropout1337/GoCycle"
 )
 
 func main() {
@@ -49,3 +49,5 @@ func main() {
 }
 
 ```
+
+I didn't make this you fuck

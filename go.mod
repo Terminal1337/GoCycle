@@ -1,3 +1,3 @@
-module github.com/dropout1337/GoCycle
+module github.com/Terminal1337/GoCycle
 
 go 1.18

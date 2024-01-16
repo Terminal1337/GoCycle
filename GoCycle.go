@@ -154,3 +154,9 @@ func (c *Cycle) LockByTimeout(Element string, Timeout time.Duration) {
 	c.Lock(Element)
 	time.Sleep(Timeout)
 }
+func (c *Cycle) ListLength() int {
+	c.Mutex.Lock()
+	defer c.Mutex.Unlock()
+
+	return len(c.List)
+}

@@ -13,7 +13,7 @@ package main
 
 import (
 	"time"
-	"github.com/dropout1337/GoCycle"
+	"github.com/Terminal1337/GoCycle"
 )
 
 func main() {

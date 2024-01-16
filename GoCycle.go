@@ -160,3 +160,16 @@ func (c *Cycle) ListLength() int {
 
 	return len(c.List)
 }
+
+func CombineCycles(c1, c2, c3 *Cycle) *Cycle {
+	combinedList := append(append([]string{}, c1.List...), append(c2.List, c3.List...)...)
+	combinedLocked := append(append([]string{}, c1.Locked...), append(c2.Locked, c3.Locked...)...)
+
+	return &Cycle{
+		WaitTime: c1.WaitTime,
+		Mutex:    &sync.Mutex{},
+		Locked:   combinedLocked,
+		List:     combinedList,
+		I:        0,
+	}
+}

@@ -4,7 +4,7 @@
 
 ## Installation:
 ```
-go get github.com/dropout1337/GoCycle
+go get github.com/Terminal1337/GoCycle
 ```
 
 ## Usage:

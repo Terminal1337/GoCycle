@@ -49,6 +49,9 @@ func main() {
 
         // Combine Cycles
         cycle.CombineCycles(cycle1,cycle2,cycle33)
+
+        // Get Cycle Len
+        cycle.ListLength()
 }
 
 ```

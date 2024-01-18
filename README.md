@@ -46,6 +46,9 @@ func main() {
 
 	// Remove element from cycle
 	cycle.Remove("a")
+
+        // Combine Cycles
+        cycle.CombineCycles(cycle1,cycle2,cycle33)
 }
 
 ```
